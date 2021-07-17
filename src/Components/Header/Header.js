@@ -6,7 +6,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 
 const Header = () => {
     return (
-        <div className="bg-light pb-2">
+        <div className="bg-light pt-2 pb-2">
             <div className="text-center m-2">
                 <img src={logo} className="img-fluid" alt="" style={{ height: "80px" }} />
             </div>

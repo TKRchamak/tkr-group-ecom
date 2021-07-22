@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const AllProducts = ({ pd, addToCard }) => {
     return (
@@ -11,7 +12,7 @@ const AllProducts = ({ pd, addToCard }) => {
                 </div>
                 <div className="col-md-8 d-flex align-items-center">
                     <div className="card-body">
-                        <h5 className="card-title">{pd.title}</h5>
+                        <h5 className="card-title"><Link to={`/product/${pd.id}`} >{pd.title}</Link></h5>
                         <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                         <p className="card-text"><small className="text-muted">Price : {pd.price}</small></p>
                         <div className="text-end">

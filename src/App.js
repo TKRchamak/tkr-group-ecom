@@ -1,14 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './Components/Header/Header';
 import Shop from './Components/Shop/Shop';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import ProductDetail from './Components/ProductDetail/ProductDetail';
+import CartReview from './Components/CartReview/CartReview';
+import { createContext, useState } from 'react';
+
+export const cartContest = createContext()
+
 
 function App() {
+  const [cart, setCart] = useState([]);
+  console.log(cart)
   return (
-    <div className="App">
-      <Header></Header>
-      <Shop></Shop>
-    </div>
+    <Router>
+      <cartContest.Provider value={[cart, setCart]}>
+        <div className="App">
+          <Header></Header>
+          <Switch>
+            <Route path="/shop">
+              <Shop></Shop>
+            </Route>
+            <Route exact path="/">
+              <Shop></Shop>
+            </Route>
+            <Route path="/product/:id">
+              <ProductDetail></ProductDetail>
+            </Route>
+            <Route path="/cart/review">
+              <CartReview></CartReview>
+            </Route>
+          </Switch>
+        </div>
+      </cartContest.Provider>
+    </Router>
+
   );
 }
 

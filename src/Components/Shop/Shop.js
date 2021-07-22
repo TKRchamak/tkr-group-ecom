@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { cartContest } from '../../App';
+import { addToDatabaseCart, processOrder } from '../../utilities/databaseManager';
 import AllProducts from '../AllProducts/AllProducts';
 import Cart from '../Cart/Cart';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useContext(cartContest);
 
     const addToCard = (pd) => {
         let addPd = [...cart, pd];
-        setCart(addPd)
+        setCart(addPd);
+        // const count = 1 + (cart.filter((p) => p.id === pd.id)).length;
+        // addToDatabaseCart(pd.id, count);
     }
 
     useEffect(() => {
@@ -24,7 +28,7 @@ const Shop = () => {
                 }
             </div>
             <div className="col-md-3 border-start pt-5">
-                <Cart cart={cart}></Cart>
+                <Cart></Cart>
             </div>
         </div>
     );

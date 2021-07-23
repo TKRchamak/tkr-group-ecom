@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { cartContest } from '../../App';
 
-const Cart = () => {
+const Cart = (props) => {
     const [cart, setCart] = useContext(cartContest);
     const decimalFix = (num) => {
         return (num.toFixed(2));
@@ -18,9 +18,9 @@ const Cart = () => {
             <p>Vat : ${vat}</p>
             {/* <p>Shipping : </p> */}
             <h6>Total Price : ${superPrice}</h6>
-            <div>
-                <button className="btn btn-info"><Link to="/cart/review">Review Orders</Link> </button>
-            </div>
+            {
+                props.children
+            }
         </div>
     );
 };

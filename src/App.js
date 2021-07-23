@@ -16,7 +16,6 @@ export const cartContest = createContext()
 
 function App() {
   const [cart, setCart] = useState([]);
-  console.log(cart)
   return (
     <Router>
       <cartContest.Provider value={[cart, setCart]}>

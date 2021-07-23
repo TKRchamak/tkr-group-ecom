@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
 import { cartContest } from '../../App';
 
 const Cart = (props) => {
-    const [cart, setCart] = useContext(cartContest);
+    const [cart] = useContext(cartContest);
+    // const [cart, setCart] = useContext(cartContest);
     const decimalFix = (num) => {
         return (num.toFixed(2));
     }

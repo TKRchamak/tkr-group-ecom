@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { cartContest } from '../../App';
-import { addToDatabaseCart, processOrder } from '../../utilities/databaseManager';
+// import { addToDatabaseCart, processOrder } from '../../utilities/databaseManager';
 import AllProducts from '../AllProducts/AllProducts';
 import Cart from '../Cart/Cart';
 

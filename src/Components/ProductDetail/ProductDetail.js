@@ -14,7 +14,7 @@ const ProductDetail = () => {
         fetch(`https://fakestoreapi.com/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
-    }, [])
+    }, [id])
 
 
     const addToCard = (pd) => {

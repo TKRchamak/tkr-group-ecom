@@ -37,7 +37,7 @@ const Header = () => {
                                 <div>
                                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#"><FontAwesomeIcon icon={faUserCircle} /></Link>
+                                            <Link className="nav-link" to="/login"><FontAwesomeIcon icon={faUserCircle} Login/></Link>
                                         </li>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="#"><FontAwesomeIcon icon={faCartArrowDown} /></Link>

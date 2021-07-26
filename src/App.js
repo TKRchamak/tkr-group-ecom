@@ -9,6 +9,7 @@ import {
 import ProductDetail from './Components/ProductDetail/ProductDetail';
 import CartReview from './Components/CartReview/CartReview';
 import { createContext, useState } from 'react';
+import Login from './Components/Login/Login';
 
 export const cartContest = createContext()
 
@@ -32,6 +33,9 @@ function App() {
             </Route>
             <Route path="/cart/review">
               <CartReview></CartReview>
+            </Route>
+            <Route path="/login">
+              <Login></Login>
             </Route>
           </Switch>
         </div>

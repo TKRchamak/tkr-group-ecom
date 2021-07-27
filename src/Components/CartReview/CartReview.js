@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import { cartContest } from '../../App';
 // import { getDatabaseCart } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+import AllProducts from '../AllProducts/AllProducts';
 
 const CartReview = () => {
-    // const [cart, setCart] = useContext(cartContest);
-    const [cart] = useContext(cartContest);
+    const [cart, setCart] = useContext(cartContest);
 
     // const [cartData, setCartData] = useState([]);
     // const [products, setProducts] = useState([]);
@@ -24,14 +26,37 @@ const CartReview = () => {
     //     })
     //     console.log(selectedPd);
     // }, [])
+    const removeFromCard = (id) => {
+        let recentCart = cart.filter(pd => pd.id !== id);
+        setCart(recentCart)
+    };
+    const placeOrder = () => {
+        setCart([]);
+    }
+
+
 
     return (
         <div className="d-flex justify-content-center">
-            <Cart cart={cart}>
-                <div>
-                    <button className="btn btn-info">Place Orders</button>
+            <div className="row container m-auto">
+                <div className="col-md-9">
+                    {
+                        cart.map(product => <AllProducts key={product.id} pd={product}>
+                            <div className="text-end">
+                                <button className="btn btn-info" onClick={() => removeFromCard(product.id)}><FontAwesomeIcon icon={faCartArrowDown} /> Remove from Card</button>
+                            </div>
+                        </AllProducts>)
+                    }
                 </div>
-            </Cart>
+                <div className="col-md-3 border-start pt-5">
+                    <Cart cart={cart}>
+                        <div>
+                            <button className="btn btn-info" onClick={placeOrder} >Place Orders</button>
+                        </div>
+                    </Cart>
+                </div>
+            </div>
+
         </div>
     );
 };

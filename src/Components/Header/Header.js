@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { cartContest } from '../../App';
 
 const Header = () => {
+
+    const [cart] = useContext(cartContest);
+    const decimalFix = (num) => {
+        return (num.toFixed(2));
+    }
+    const totalQuantity = +decimalFix(cart.reduce((result, pd) => result + pd.quantity, 0));
+
     return (
         <div className="bg-light pt-2 pb-2">
             <div className="text-center m-2">
@@ -21,26 +29,23 @@ const Header = () => {
                             </div>
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                                    <li className="nav-item">
+                                    {/* <li className="nav-item">
                                         <Link className="nav-link" aria-current="page" to="/">Home</Link>
-                                    </li>
+                                    </li> */}
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/shop">Shop</Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/cart/review">Review</Link>
                                     </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/shop">Country</Link>
-                                    </li>
                                 </ul>
                                 <div>
                                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="/login"><FontAwesomeIcon icon={faUserCircle} Login/></Link>
+                                            <Link className="nav-link" to="/logIn"><FontAwesomeIcon icon={faUserCircle} /></Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#"><FontAwesomeIcon icon={faCartArrowDown} /></Link>
+                                            <Link className="nav-link" to="/cart/review"><FontAwesomeIcon icon={faCartArrowDown} />{totalQuantity}</Link>
                                         </li>
                                     </ul>
                                 </div>

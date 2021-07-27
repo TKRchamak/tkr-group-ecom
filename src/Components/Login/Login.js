@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './FirebaseConfig';
+import { newUserContest, userContest } from '../../App';
 
 
 
@@ -12,15 +13,18 @@ if (!firebase.apps.length) {
     firebase.app(); // if already initialized, use that one
 }
 
-const Login = () => {
-    const [newUser, setNewUser] = useState(false)
-    const [user, setUser] = useState({
-        name: '',
-        phone: '',
-        email: '',
-        password: '',
-        img: ''
-    })
+const LogIn = () => {
+    const [newUser, setNewUser] = useContext(newUserContest)
+    // const [newUser, setNewUser] = useState(false)
+    // const [user, setUser] = useState({
+    //     name: '',
+    //     phone: '',
+    //     email: '',
+    //     password: '',
+    //     img: ''
+    // })
+    const [user, setUser] = useContext(userContest)
+
 
 
     const takeFormData = e => {
@@ -46,7 +50,7 @@ const Login = () => {
         }
     }
     const submitForm = (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         if (newUser && user.email && user.password) {
             firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
                 .then((userCredential) => {
@@ -69,12 +73,13 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed in
                     var user = userCredential.user;
-                    console.log(user)
+                    console.log("user =", user)
                     // ...
                 })
                 .catch((error) => {
                     var errorCode = error.code;
                     var errorMessage = error.message;
+                    console.log(errorMessage)
                 });
         }
         const updateProfile = (name, phone) => {
@@ -88,50 +93,50 @@ const Login = () => {
                 // ...
             }).catch((error) => {
                 // An error occurred
+                let errorMessage = error.message;
                 // ...
+                console.log(errorMessage)
             });
         }
 
     }
-    console.log(user)
-
-
-
     return (
-        <div className="container pt-4">
-            <form onSubmit={submitForm}>
-                {
-                    newUser &&
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputEmail1" className="form-label">Full Name</label>
-                        <input onBlur={takeFormData} type="text" name="name" className="form-control" id="exampleInputEmail1" required />
-                    </div>
+        <div className="container p-5">
+            <div className="container pt-4">
+                <form onSubmit={submitForm}>
+                    {
+                        newUser &&
+                        <div className="mb-3">
+                            <label htmlFor="exampleInputName" className="form-label">Full Name</label>
+                            <input onBlur={takeFormData} type="text" name="name" className="form-control" id="exampleInputName" required />
+                        </div>
 
-                }
-                {
-                    newUser &&
+                    }
+                    {
+                        newUser &&
+                        <div className="mb-3">
+                            <label htmlFor="exampleInputPhone" className="form-label">Phone / Mobile Number</label>
+                            <input onBlur={takeFormData} type="number" name="phone" className="form-control" id="exampleInputPhone" />
+                        </div>
+                    }
                     <div className="mb-3">
-                        <label htmlFor="exampleInputEmail1" className="form-label">Phone / Mobile Number</label>
-                        <input onBlur={takeFormData} type="number" name="phone" className="form-control" id="exampleInputEmail1" />
+                        <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                        <input onBlur={takeFormData} type="email" name="email" className="form-control" id="exampleInputEmail1" required />
+                        <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                     </div>
-                }
-                <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                    <input onBlur={takeFormData} type="email" name="email" className="form-control" id="exampleInputEmail1" required />
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                    <input onBlur={takeFormData} type="password" name="password" className="form-control" id="exampleInputPassword1" required />
-                </div>
-                <div className="mb-3 form-check">
-                    <input onChange={() => setNewUser(!newUser)} type="checkbox" className="form-check-input" id="exampleCheck1" />
-                    <label className="form-check-label" htmlFor="exampleCheck1">Create New User</label>
-                </div>
-                <button type="submit" className="btn btn-primary">{newUser ? "Sign In" : "Login"}</button>
-            </form>
+                    <div className="mb-3">
+                        <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                        <input onBlur={takeFormData} type="password" name="password" className="form-control" id="exampleInputPassword1" required />
+                    </div>
+                    <div className="mb-3 form-check">
+                        <input onChange={() => setNewUser(!newUser)} type="checkbox" className="form-check-input" id="exampleCheck1" />
+                        <label className="form-check-label" htmlFor="exampleCheck1">Create New User</label>
+                    </div>
+                    <button type="submit" className="btn btn-primary">{newUser ? "Sign In" : "Login"}</button>
+                </form>
+            </div>
         </div>
     );
 };
 
-export default Login;
+export default LogIn;

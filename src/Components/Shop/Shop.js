@@ -4,6 +4,8 @@ import { cartContest } from '../../App';
 // import { addToDatabaseCart, processOrder } from '../../utilities/databaseManager';
 import AllProducts from '../AllProducts/AllProducts';
 import Cart from '../Cart/Cart';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -41,7 +43,11 @@ const Shop = () => {
         <div className="row container m-auto">
             <div className="col-md-9">
                 {
-                    products.map(product => <AllProducts key={product.id} pd={product} addToCard={addToCard}></AllProducts>)
+                    products.map(product => <AllProducts key={product.id} pd={product} addToCard={addToCard}>
+                        <div className="text-end">
+                            <button className="btn btn-info" onClick={() => addToCard(product)}><FontAwesomeIcon icon={faCartArrowDown} /> Add To Card</button>
+                        </div>
+                    </AllProducts>)
                 }
             </div>
             <div className="col-md-3 border-start pt-5">

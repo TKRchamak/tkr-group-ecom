@@ -7,7 +7,7 @@ const Cart = (props) => {
     const decimalFix = (num) => {
         return (num.toFixed(2));
     }
-    const totalPrice = +decimalFix(cart.reduce((result, pd) => result + pd.price, 0));
+    const totalPrice = +decimalFix(cart.reduce((result, pd) => result + pd.price*pd.quantity, 0));
     // const totalQuantity = +decimalFix(cart.reduce((result, pd) => result + pd.quantity, 0));
     const vat = +decimalFix(totalPrice / 10);
     const superPrice = +decimalFix(totalPrice + vat);

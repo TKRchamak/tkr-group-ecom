@@ -5,6 +5,7 @@ import Cart from '../Cart/Cart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import AllProducts from '../AllProducts/AllProducts';
+import { Link, useHistory } from 'react-router-dom';
 
 const CartReview = () => {
     const [cart, setCart] = useContext(cartContest);
@@ -30,10 +31,11 @@ const CartReview = () => {
         let recentCart = cart.filter(pd => pd.id !== id);
         setCart(recentCart)
     };
+    let history = useHistory();
     const placeOrder = () => {
         setCart([]);
+        history.push("/shipping");
     }
-
 
 
     return (

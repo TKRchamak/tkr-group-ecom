@@ -3,11 +3,12 @@ import logo from '../../images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { cartContest } from '../../App';
+import { cartContest, userContest } from '../../App';
 
 const Header = () => {
 
     const [cart] = useContext(cartContest);
+    const [user] = useContext(userContest);
     const decimalFix = (num) => {
         return (num.toFixed(2));
     }
@@ -42,7 +43,7 @@ const Header = () => {
                                 <div>
                                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="/logIn"><FontAwesomeIcon icon={faUserCircle} /></Link>
+                                            <Link className="nav-link" to="/login"><FontAwesomeIcon icon={faUserCircle} />{user.name}</Link>
                                         </li>
                                         <li className="nav-item">
                                             <Link className="nav-link" to="/cart/review"><FontAwesomeIcon icon={faCartArrowDown} />{totalQuantity}</Link>

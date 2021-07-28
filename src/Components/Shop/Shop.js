@@ -17,11 +17,9 @@ const Shop = () => {
     }, [])
 
     const [cart, setCart] = useContext(cartContest);
-    console.log(cart)
     const addToCard = (pd) => {
 
         const count = (cart.filter((p) => p.id === pd.id))
-        console.log(count[0]?.quantity)
         if (count[0]?.quantity > 0) {
             let index = cart.indexOf(pd);
             cart.splice(index, 1);

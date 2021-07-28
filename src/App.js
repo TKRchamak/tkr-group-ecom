@@ -10,6 +10,8 @@ import ProductDetail from './Components/ProductDetail/ProductDetail';
 import CartReview from './Components/CartReview/CartReview';
 import { createContext, useState } from 'react';
 import LogIn from './Components/LogIn/LogIn';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Shipping from './Components/Shipping/Shipping';
 
 export const cartContest = createContext();
 export const userContest = createContext();
@@ -18,7 +20,9 @@ export const newUserContest = createContext();
 
 function App() {
   const [cart, setCart] = useState([]);
+  
   const [user, setUser] = useState({
+    isUser: false,
     name: '',
     phone: '',
     email: '',
@@ -48,9 +52,12 @@ function App() {
                 <Route path="/cart/review">
                   <CartReview></CartReview>
                 </Route>
-                <Route path="/logIn">
+                <Route path="/login">
                   <LogIn></LogIn>
                 </Route>
+                <PrivateRoute path="/shipping">
+                  <Shipping></Shipping>
+                </PrivateRoute>
               </Switch>
             </div>
           </newUserContest.Provider>

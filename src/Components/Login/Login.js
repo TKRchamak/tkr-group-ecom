@@ -158,13 +158,13 @@ const LogIn = () => {
                 {
                     user.isUser ?
                         <div>
-                            <div className="card m-3 p-2" style={{ maxWidth: "100%" }}>
+                            <div className="card p-1" style={{ maxWidth: "100%" }}>
                                 <div className="row g-0">
                                     <div className="col-md-5 d-flex justify-content-center align-items-center">
                                         <img style={{ maxHeight: "60vh" }} src={user.img} className="img-fluid rounded-start" alt="..." />
                                     </div>
                                     <div className="col-md-7 d-flex justify-content-center align-items-center">
-                                        <div className="card-body">
+                                        <div className="card-body" style={{ maxWidth: "100%" }}>
                                             <h3 className="card-title">{user.name}</h3>
                                             <p className="card-text">{user.email}</p>
                                             <p className="card-text"><small className="text-muted">Price : ${user.phone}</small></p>

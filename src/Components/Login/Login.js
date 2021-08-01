@@ -6,8 +6,6 @@ import { newUserContest, userContest } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
 
 
-
-
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 } else {

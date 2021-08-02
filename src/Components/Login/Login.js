@@ -141,13 +141,23 @@ const LogIn = () => {
 
     }
 
+    const getJWTToken = () => {
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function (idToken) {
+            // Send token to your backend via HTTPS
+            // ...
+        }).catch(function (error) {
+            // Handle error
+        });
+    }
+
+
     //Sign Out 
-    const handleSignOut =() =>{
+    const handleSignOut = () => {
         firebase.auth().signOut().then(() => {
             setUser({})
-          }).catch((error) => {
+        }).catch((error) => {
             // An error happened.
-          });
+        });
     }
 
 

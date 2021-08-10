@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
-import { cartContest } from '../../App';
+import { cartContest } from '../../../App';
+import Header from '../Header/Header';
 
 const ProductDetail = () => {
     let { id } = useParams();
@@ -11,27 +12,41 @@ const ProductDetail = () => {
     const [cart, setCart] = useContext(cartContest);
 
     useEffect(() => {
-        fetch(`https://fakestoreapi.com/products/${id}`)
+        fetch(`http://localhost:5000/singleProduct/${id}`)
             .then(res => res.json())
+            // .then(data => console.log(data))
             .then(data => setProduct(data))
     }, [id])
 
 
     const addToCard = (pd) => {
-        let addPd = [...cart, pd];
-        setCart(addPd);
-        // const count = 1 + (cart.filter((p) => p.id === pd.id)).length;
-        // addToDatabaseCart(pd.id, count);
+        const count = (cart.filter((p) => p._id === pd._id))
+        if (count[0]?.quantity > 0) {
+            let index = cart.indexOf(pd);
+            cart.splice(index, 1);
+            pd.quantity = count[0]?.quantity + 1;
+            let addPd = [...cart, pd];
+            setCart(addPd);
+        } else {
+            pd.quantity = 1;
+            let addPd = [...cart, pd];
+            setCart(addPd);
+        }
     }
 
 
 
     return (
         <div>
+            <Header></Header>
             <div className="card m-3 p-2" style={{ maxWidth: "100%" }}>
                 <div className="row g-0">
                     <div className="col-md-5 d-flex justify-content-center align-items-center">
-                        <img style={{ maxHeight: "60vh" }} src={product.image} className="img-fluid rounded-start" alt="..." />
+                    {
+                        product.image?.img ? <img style={{ maxWidth: "60vh" }} src={`data:image/png;base64,${product.image.img}`} className="img-fluid rounded-start" alt="..."/>
+                        :<img style={{ maxWidth: "60vh" }} src={product.image} className="img-fluid rounded-start" alt="..." />
+                    }
+                        {/* <img style={{ maxHeight: "60vh" }} src={product.image} className="img-fluid rounded-start" alt="..." /> */}
                     </div>
                     <div className="col-md-7 d-flex justify-content-center align-items-center">
                         <div className="card-body">

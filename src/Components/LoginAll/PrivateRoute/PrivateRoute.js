@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { userContest } from '../../App';
+import { userContest } from '../../../App';
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const [user, setUser] = useContext(userContest)
+    const [user] = useContext(userContest)
     return (
         <Route
             {...rest}

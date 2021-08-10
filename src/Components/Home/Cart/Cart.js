@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { cartContest } from '../../App';
+import { cartContest } from '../../../App';
 
 const Cart = (props) => {
     const [cart] = useContext(cartContest);

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import logo from '../../images/logo.png';
+import logo from '../../../images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { cartContest, userContest } from '../../App';
+import { cartContest, userContest } from '../../../App';
 
 const Header = () => {
 
@@ -39,6 +39,12 @@ const Header = () => {
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/cart/review">Review</Link>
                                     </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/dashboard">Dashboard</Link>
+                                    </li>
+                                    {/* <li className="nav-item">
+                                        <Link className="nav-link" to="/admin">Admin</Link>
+                                    </li> */}
                                 </ul>
                                 <div>
                                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">

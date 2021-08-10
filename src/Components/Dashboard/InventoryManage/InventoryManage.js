@@ -6,7 +6,7 @@ const InventoryManage = () => {
     const [user, setUser] = useContext(userContest);
     
     // const addAllProduct = () => {
-    //     fetch('http://localhost:5000/addProduct', {
+    //     fetch('https://vast-meadow-07590.herokuapp.com/addProduct', {
     //         method:'POST',
     //         headers : {
     //             'Content-Type': 'application/json'
@@ -17,7 +17,7 @@ const InventoryManage = () => {
 
     //superAdmin
     const superAdmin = () => {
-        fetch('http://localhost:5000/superAdmin?email=' + user.email, {
+        fetch('https://vast-meadow-07590.herokuapp.com/superAdmin?email=' + user.email, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

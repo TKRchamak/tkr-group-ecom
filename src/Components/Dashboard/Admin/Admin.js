@@ -8,7 +8,7 @@ const Admin = () => {
     const [adminList, setAdminList] = useState([]);
     const [user] = useContext(userContest);
     useEffect(() => {
-        fetch('http://localhost:5000/adminList?email=' + user.email, {
+        fetch('https://vast-meadow-07590.herokuapp.com/adminList?email=' + user.email, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ const Admin = () => {
 
     const removeAdmin = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/removeAdmin/${id}`, {
+        fetch(`https://vast-meadow-07590.herokuapp.com/removeAdmin/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

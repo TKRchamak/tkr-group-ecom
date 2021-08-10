@@ -26,7 +26,7 @@ const AddAdmin = () => {
         formData.append('description', admin.description);
         formData.append('age', admin.age);
 
-        fetch('http://localhost:5000/addAdmin', {
+        fetch('https://vast-meadow-07590.herokuapp.com/addAdmin', {
             method: 'post',
             body: formData
         })

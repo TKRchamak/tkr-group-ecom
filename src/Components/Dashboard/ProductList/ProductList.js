@@ -6,7 +6,7 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 const ProductList = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/allProducts')
+        fetch('https://vast-meadow-07590.herokuapp.com/allProducts')
             .then(res => res.json())
             .then(data => setProducts(data))
             .catch(err => console.log(err))
@@ -15,7 +15,7 @@ const ProductList = () => {
 
     const deleteData = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/deleteProduct/${id}`, {
+        fetch(`https://vast-meadow-07590.herokuapp.com/deleteProduct/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

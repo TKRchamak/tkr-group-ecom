@@ -25,7 +25,7 @@ const AddProduct = () => {
         formData.append('description', product.description);
         formData.append('category', product.category);
 
-        fetch('http://localhost:5000/addProduct', {
+        fetch('https://vast-meadow-07590.herokuapp.com/addProduct', {
           method: 'post',
           body: formData
         })

@@ -12,7 +12,7 @@ const ProductDetail = () => {
     const [cart, setCart] = useContext(cartContest);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleProduct/${id}`)
+        fetch(`https://vast-meadow-07590.herokuapp.com/singleProduct/${id}`)
             .then(res => res.json())
             // .then(data => console.log(data))
             .then(data => setProduct(data))

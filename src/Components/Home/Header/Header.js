@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import logo from '../../../images/logo.png';
+import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -17,7 +18,8 @@ const Header = () => {
     return (
         <div className="bg-light pt-2 pb-2">
             <div className="text-center m-2">
-                <img src={logo} className="img-fluid" alt="" style={{ height: "80px" }} />
+                {/* <img src={logo} className="img-fluid" alt="" style={{ height: "80px" }} /> */}
+                <h1 className="LogoStyle">TKR group</h1>
             </div>
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

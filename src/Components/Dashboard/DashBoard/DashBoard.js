@@ -9,7 +9,7 @@ const DashBoard = () => {
 
     // //Admin
     // useEffect(() => {
-    //     fetch('https://vast-meadow-07590.herokuapp.com/admin?email=' + user.email, {
+    //     fetch('http://localhost:5000/admin?email=' + user.email, {
     //         method: 'GET',
     //         headers: {
     //             'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ const DashBoard = () => {
 
     // //superAdmin
     // useEffect(() => {
-    //     fetch('https://vast-meadow-07590.herokuapp.com/superAdmin?email=' + user.email, {
+    //     fetch('http://localhost:5000/superAdmin?email=' + user.email, {
     //         method: 'GET',
     //         headers: {
     //             'Content-Type': 'application/json',

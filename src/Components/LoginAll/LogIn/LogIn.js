@@ -139,7 +139,7 @@ const LogIn = () => {
 
     // addSuperAdmin
     // const addSuperAdmin =(user)=> {
-    //     fetch('https://vast-meadow-07590.herokuapp.com/addSuperAdmin', {
+    //     fetch('http://localhost:5000/addSuperAdmin', {
     //         method: 'POST',
     //         headers : {
     //             'Content-Type': 'application/json',
@@ -189,7 +189,7 @@ const LogIn = () => {
 
     //superAdmin
     // const superAdmin = () => {
-    //     fetch('https://vast-meadow-07590.herokuapp.com/superAdmin?email=' + user.email, {
+    //     fetch('http://localhost:5000/superAdmin?email=' + user.email, {
     //         method: 'GET',
     //         headers: {
     //             'Content-Type': 'application/json',

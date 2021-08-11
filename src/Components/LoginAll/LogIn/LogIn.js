@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './FirebaseConfig';
@@ -14,6 +14,9 @@ if (!firebase.apps.length) {
 }
 
 const LogIn = () => {
+
+
+
     const [newUser, setNewUser] = useContext(newUserContest)
     // const [newUser, setNewUser] = useState(false)
     // const [user, setUser] = useState({
@@ -210,6 +213,28 @@ const LogIn = () => {
             // An error happened.
         });
     }
+    useEffect(() => {
+        fetch('http://localhost:5000/user', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${sessionStorage.getItem('token')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            const recentUser = {
+                isUser: true,
+                name: data.name,
+                phone: '',
+                email: data.email,
+                password: '',
+                img: data.picture
+            }
+            setUser(recentUser);
+            history.replace(from);
+        })
+    }, [])
 
 
 

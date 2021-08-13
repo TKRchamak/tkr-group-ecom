@@ -4,7 +4,7 @@ import "firebase/auth";
 import firebaseConfig from './FirebaseConfig';
 import { newUserContest, userContest } from '../../../App';
 import { useHistory, useLocation } from 'react-router-dom';
-import Header from '../../Home/Header/Header';
+import Header from '../../Shared/Header/Header';
 
 
 if (!firebase.apps.length) {

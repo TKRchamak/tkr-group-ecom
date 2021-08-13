@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Sidebar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog, faSignOutAlt, faCalendar, faHome, faGripHorizontal, faUserPlus, faUsers } from '@fortawesome/free-solid-svg-icons';
-import { faFileAlt } from '@fortawesome/free-regular-svg-icons'
+import { faCog, faSignOutAlt, faCalendar, faHome, faGripHorizontal, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+// import { faFileAlt } from '@fortawesome/free-regular-svg-icons'
 import { userContest } from '../../../App';
 import firebase from "firebase/app";
 import "firebase/auth";

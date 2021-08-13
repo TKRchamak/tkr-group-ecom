@@ -1,0 +1,7 @@
+.product-type ul li{
+    border-bottom: 2px solid transparent;
+}
+
+.product-type ul li:hover {
+    border-bottom: 2px solid rgb(237, 126, 22);
+}

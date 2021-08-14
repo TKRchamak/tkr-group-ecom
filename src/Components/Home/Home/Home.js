@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { productContext } from '../../../App';
 import Header from '../../Shared/Header/Header';
 import Slider2 from '../Slider2/Slider2';
 import './Home.css'
 
 const Home = () => {
+    const [products, setProducts] = useContext(productContext);
+    const fiveProduct = products.slice(0, 5);
+    const twoProduct = products.slice(14, 16);
+    console.log(twoProduct)
+
     return (
         <div>
             <Header></Header>
@@ -22,8 +29,40 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div>
-                    
+                <div className="container-fluid pt-5 pb-5">
+                    <div className="row d-flex justify-content-center">
+                        {
+                            fiveProduct.map(pd =>
+                                <div className="card border-0" key={pd._id} style={{ width: '13rem' }}>
+                                    <img src={pd.image} style={{ height: '200px', width: '9rem' }} className="card-img-top " alt="..." />
+                                    <div className="card-body">
+                                        <small className="card-title fw-bold"><Link className="link-dark" to={`/product/${pd._id}`} >{pd.title}</Link></small>
+                                    </div>
+                                </div>
+                            )
+                        }
+
+                    </div>
+                </div>
+                <div className="two-pd-bg">
+                    <div className="container d-flex justify-content-center align-items-center pt-5 pb-5" style={{height:"auto"}}>
+                        <div className="row">
+                            {
+                                twoProduct.map(pd =>
+                                    <div className="col-md me-3 bg-light p-3" key={pd._id}>
+                                        <div className="d-flex justify-content-center pd-bg-hover">
+                                            <img className="img-fluid" src={pd.image} style={{ maxHeight: "300px" }} alt="" />
+                                            <div className="text-end pt-4">
+                                                <h6>{pd.category}</h6>
+                                                <h1>{pd.title}</h1>
+                                                <h4>${pd.price}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

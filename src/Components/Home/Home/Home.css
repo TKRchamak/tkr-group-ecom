@@ -5,3 +5,21 @@
 .product-type ul li:hover {
     border-bottom: 2px solid rgb(237, 126, 22);
 }
+
+.two-pd-bg{
+    background-image: url('../../../images/niklas-ohlrogge-j-0olYcaihg-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pd-bg-hover{
+    padding: 1rem;
+    transition: 1s ease-out;
+    opacity: 1;
+}
+
+.pd-bg-hover:hover{
+    opacity: 0.5;
+    padding: 0rem;
+    transition: 1s linear;
+}

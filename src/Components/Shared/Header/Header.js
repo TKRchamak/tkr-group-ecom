@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import logo from '../../../images/logo.png';
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown, faUserCircle, faShippingFast, faCalendarAlt, faWallet, faPhoneSquareAlt } from '@fortawesome/free-solid-svg-icons';

@@ -51,7 +51,7 @@ const Home = () => {
                             {
                                 twoProduct.map(pd =>
                                     <div className="col-md me-3 bg-light p-3" key={pd._id}>
-                                        <div className="d-flex justify-content-center pd-bg-hover">
+                                        <div className="d-lg-flex justify-content-center pd-bg-hover text-center m-2">
                                             <img className="img-fluid" src={pd.image} style={{ maxHeight: "300px" }} alt="" />
                                             <div className="text-end pt-4">
                                                 <h6>{pd.category}</h6>
